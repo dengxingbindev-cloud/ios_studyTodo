@@ -2,9 +2,9 @@ import Foundation
 
 final class TodoNetwork {
 
-    //private static let baseURL = "http://localhost:3000"
+    private static let baseURL = "http://localhost:3000"
     
-    private static let baseURL = "http://192.168.3.184:3000"
+    //private static let baseURL = "http://192.168.3.184:3000"
 
     /// 获取Todo列表
     static func load(

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		625A52FE30071ECE00645276 /* CropViewController in Frameworks */ = {isa = PBXBuildFile; productRef = 625A52FD30071ECE00645276 /* CropViewController */; };
+		625A530030071ECE00645276 /* TOCropViewController in Frameworks */ = {isa = PBXBuildFile; productRef = 625A52FF30071ECE00645276 /* TOCropViewController */; };
 		626C2F993000D7B3008BF7AD /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 626C2F983000D7B3008BF7AD /* SnapKit */; };
 /* End PBXBuildFile section */
 
@@ -70,6 +72,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				626C2F993000D7B3008BF7AD /* SnapKit in Frameworks */,
+				625A530030071ECE00645276 /* TOCropViewController in Frameworks */,
+				625A52FE30071ECE00645276 /* CropViewController in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -131,6 +135,8 @@
 			name = demo_todo;
 			packageProductDependencies = (
 				626C2F983000D7B3008BF7AD /* SnapKit */,
+				625A52FD30071ECE00645276 /* CropViewController */,
+				625A52FF30071ECE00645276 /* TOCropViewController */,
 			);
 			productName = demo_todo;
 			productReference = 626C2F573000D2E3008BF7AD /* demo_todo.app */;
@@ -216,6 +222,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				626C2F973000D7B3008BF7AD /* XCRemoteSwiftPackageReference "SnapKit" */,
+				625A52FC30071ECE00645276 /* XCRemoteSwiftPackageReference "TOCropViewController" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 626C2F583000D2E3008BF7AD /* Products */;
@@ -608,6 +615,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		625A52FC30071ECE00645276 /* XCRemoteSwiftPackageReference "TOCropViewController" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/TimOliver/TOCropViewController";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.1.2;
+			};
+		};
 		626C2F973000D7B3008BF7AD /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
@@ -619,6 +634,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		625A52FD30071ECE00645276 /* CropViewController */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 625A52FC30071ECE00645276 /* XCRemoteSwiftPackageReference "TOCropViewController" */;
+			productName = CropViewController;
+		};
+		625A52FF30071ECE00645276 /* TOCropViewController */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 625A52FC30071ECE00645276 /* XCRemoteSwiftPackageReference "TOCropViewController" */;
+			productName = TOCropViewController;
+		};
 		626C2F983000D7B3008BF7AD /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 626C2F973000D7B3008BF7AD /* XCRemoteSwiftPackageReference "SnapKit" */;

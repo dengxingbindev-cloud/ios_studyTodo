@@ -8,6 +8,18 @@ class TodoListViewController: UIViewController {
     private var todos: [Todo] = []
 
     // MARK: - UI
+    
+    private lazy var detailLabelTo:UILabel = {
+        let label = UILabel()
+        label.text = "个人主页"
+        label.textAlignment = .center
+        label.isUserInteractionEnabled = true
+        
+        let tap = UITapGestureRecognizer(target:self,action:#selector(labelTapped))
+        label.addGestureRecognizer(tap)
+        
+        return label
+    }()
 
     private lazy var textField: UITextField = {
         let tf = UITextField()
@@ -46,6 +58,8 @@ class TodoListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
 
         title = "Todo List"
 
@@ -79,34 +93,47 @@ class TodoListViewController: UIViewController {
         view.addSubview(textField)
         view.addSubview(addButton)
         view.addSubview(tableView)
+        view.addSubview(detailLabelTo)
 
-        textField.snp.makeConstraints {
+        detailLabelTo.snp.makeConstraints {maker in
 
-            $0.top.equalTo(view.safeAreaLayoutGuide).offset(20)
+            maker.top.equalTo(view.safeAreaLayoutGuide).offset(-10)
 
-            $0.left.equalToSuperview().offset(20)
+            maker.right.equalTo(addButton.snp.right).offset(-10)
 
-            $0.right.equalTo(addButton.snp.left).offset(-10)
+            maker.height.equalTo(30)
+            
+            maker.width.equalTo(80)
 
-            $0.height.equalTo(40)
+        }
+        
+        textField.snp.makeConstraints {maker in
+
+            maker.top.equalTo(view.safeAreaLayoutGuide).offset(40)
+
+            maker.left.equalToSuperview().offset(20)
+
+            maker.right.equalTo(addButton.snp.left).offset(-10)
+
+            maker.height.equalTo(40)
 
         }
 
-        addButton.snp.makeConstraints {
+        addButton.snp.makeConstraints {maker in
 
-            $0.centerY.equalTo(textField)
+            maker.centerY.equalTo(textField)
 
-            $0.right.equalToSuperview().offset(-20)
+            maker.right.equalToSuperview().offset(-20)
 
-            $0.width.equalTo(60)
+            maker.width.equalTo(60)
 
         }
 
-        tableView.snp.makeConstraints {
+        tableView.snp.makeConstraints {maker in
 
-            $0.top.equalTo(textField.snp.bottom).offset(20)
+            maker.top.equalTo(textField.snp.bottom).offset(20)
 
-            $0.left.right.bottom.equalToSuperview()
+            maker.left.right.bottom.equalToSuperview()
 
         }
 
@@ -138,6 +165,13 @@ class TodoListViewController: UIViewController {
 
         textField.resignFirstResponder()
 
+    }
+    
+    @objc
+    func labelTapped(){
+        let vc = PersonalHomepageController()
+        navigationController?.pushViewController(vc, animated: true)
+        print("点我干嘛")
     }
 
 }
@@ -231,4 +265,9 @@ extension TodoListViewController: UITableViewDelegate {
 
     }
 
+}
+
+@available(iOS 17,*)
+#Preview{
+    TodoListViewController()
 }
