@@ -1,8 +1,9 @@
 import UIKit
 import SnapKit
 import PhotosUI
+import CropViewController
 
-class PersonalHomepageController: UIViewController,PHPickerViewControllerDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate{
+class PersonalHomepageController: UIViewController,PHPickerViewControllerDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,CropViewControllerDelegate{
     
     private var person:Person
     
@@ -140,17 +141,43 @@ extension PersonalHomepageController{
 
             DispatchQueue.main.async {
 
-                // 更新头像
-                self.detailView.userAvator.image = image
+                let cropVC = CropViewController(image: image)
+                
+//                //不允许改变裁剪框比例
+//                cropVC.aspectRatioLockEnabled = true
+//
+//                //隐藏旋转按钮
+//                cropVC.rotateButtonsHidden = true
+//
+//                //隐藏复位按钮
+//                cropVC.resetButtonHidden = true
 
-                // 保存图片
-                if let path = ImageStorage.save(image) {
 
-                    self.person.avatorPath = path
+                cropVC.delegate = self
 
-                    PersonStorage.save(self.person)
-                }
+                self.present(cropVC, animated: true)
             }
+        }
+    }
+    
+    func cropViewController(_ cropViewController: CropViewController,
+                            didCropToImage image: UIImage,
+                            withRect cropRect: CGRect,
+                            angle: Int) {
+        
+        print("裁剪完成")
+
+        cropViewController.dismiss(animated: true)
+
+        detailView.userAvator.image = image
+
+        if let path = ImageStorage.save(image) {
+
+            person.avatorPath = path
+
+            PersonStorage.save(person)
+            
+            print("保存成功")
         }
     }
     
